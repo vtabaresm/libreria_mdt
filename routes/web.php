@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+//Se generan todas las rutas asociadas al controlador CategoryController
+Route::resource('categories', CategoryController::class);
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
