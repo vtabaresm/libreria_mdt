@@ -22,7 +22,8 @@
         <input type="date" name="birth_date" class="form-control">
     </div>
 
-    <button class="btn btn-success">Guardar</button>
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{{ route('authors.index') }}" class="btn btn-secondary">Cancelar</a>
 </form>
 
 @endsection

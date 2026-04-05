@@ -13,20 +13,30 @@
     </div>
 
     <div class="mb-3">
-        <label>Año de publicación</label>
-        <input type="number" name="publication_year" class="form-control">
+        <label>Año publicación</label>
+        <input type="number" name="publication_year" min="1900" max="2099" step="1" class="form-control">
     </div>
 
     <div class="mb-3">
-        <label>Categoría</label>
+        <label class="form-label">Categoría</label>
         <select name="category_id" class="form-control">
             <option value="">Seleccione una categoría</option>
-            @foreach($categories as $category)
-                <option value="{{ $category->id }}">
-                    {{ $category->name }}
-                </option>
-            @endforeach
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">
+                        {{ $category->name }}
+                    </option>
+                @endforeach
         </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Autores</label>
+        @foreach($authors as $author)
+            <div class="form-check">
+                <input type="checkbox" name="authors[]" value="{{ $author->id }}" class="form-check-input">
+                <label class="form-check-label">{{ $author->name }}</label>
+            </div>
+        @endforeach
     </div>
 
     <div class="mb-3">
@@ -34,7 +44,9 @@
         <textarea name="description" class="form-control"></textarea>
     </div>
 
-    <button class="btn btn-success">Guardar</button>
-</form>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{{ route('books.index') }}" class="btn btn-secondary">Cancelar</a>
+
+    </form>
 
 @endsection

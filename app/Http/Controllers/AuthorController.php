@@ -44,5 +44,3 @@ class AuthorController extends Controller
         return redirect()->route('authors.index');
     }
 }
-
-
