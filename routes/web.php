@@ -5,9 +5,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 
 //Se generan todas las rutas asociadas al controlador CategoryController
 Route::resource('categories', CategoryController::class);
@@ -15,3 +12,8 @@ Route::resource('categories', CategoryController::class);
 Route::resource('authors', AuthorController::class);
 //Se generan todas las rutas asociadas al controlador BookController
 Route::resource('books', BookController::class);
+
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
