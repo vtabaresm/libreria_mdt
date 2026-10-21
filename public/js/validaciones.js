@@ -1,0 +1,1 @@
+alert("Lo que sea");

@@ -20,5 +20,5 @@
     <button type="submit" class="btn btn-success">Guardar</button>
     <a href="{{ route('authors.index') }}" class="btn btn-secondary">Cancelar</a>
 </form>
-
+<script src="{{asset('js/validaciones.js')}}"></script>
 @endsection

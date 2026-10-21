@@ -20,6 +20,7 @@
 
     <button class="btn btn-primary">Actualizar</button>
 </form>
+<script src="{{asset('js/validaciones.js')}}"></script>
 
 @endsection
 
