@@ -4,27 +4,28 @@
 
 <h1>Editar Autor</h1>
 
-<form action="{{ route('authors.update', $author->id) }}" method="POST">
+<form action="{{ route('authors.update', $author->id) }}" method="POST" id="formulario">
     @csrf
     @method('PUT')
 
     <div class="mb-3">
         <label>Nombre</label>
-        <input type="text" name="name" value="{{ $author->name }}" class="form-control">
+        <input type="text" name="name" value="{{ $author->name }}" class="form-control" id="nombre">
     </div>
 
     <div class="mb-3">
         <label>Nacionalidad</label>
-        <input type="text" name="nationality" value="{{ $author->nationality }}" class="form-control">
+        <input type="text" name="nationality" value="{{ $author->nationality }}" class="form-control" id="nacionalidad">
     </div>
 
     <div class="mb-3">
         <label>Fecha de nacimiento</label>
-        <input type="date" name="birth_date" value="{{ $author->birth_date }}" class="form-control">
+        <input type="date" name="birth_date" value="{{ $author->birth_date }}" class="form-control" id="fecha_nacimiento">
     </div>
 
     <button class="btn btn-primary">Actualizar</button>
 </form>
+<script src="{{asset('js/validacion_autores.js')}}"></script>
 
 @endsection
 

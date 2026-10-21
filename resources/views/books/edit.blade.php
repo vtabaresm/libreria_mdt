@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <h1>Editar Libro</h1>
 
-    <form action="{{ route('books.update', $book->id) }}" method="POST">
+    <form action="{{ route('books.update', $book->id) }}" method="POST" >
         @csrf
         @method('PUT')
 
@@ -35,10 +35,10 @@
 
             @foreach($authors as $author)
                 <div class="form-check">
-                    <input 
-                        type="checkbox" 
-                        name="authors[]" 
-                        value="{{ $author->id }}" 
+                    <input
+                        type="checkbox"
+                        name="authors[]"
+                        value="{{ $author->id }}"
                         class="form-check-input"
                         {{ $book->authors->contains($author->id) ? 'checked' : '' }}
                     >
