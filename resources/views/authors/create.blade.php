@@ -4,14 +4,14 @@
 
 <h1>Nuevo Autor</h1>
 
-<form action="{{ route('authors.store') }}" method="POST" id="formulario">
+<form action="{{ route('authors.store') }}" method="POST" id="formulario" novalidate>
     @csrf
 
     <div class="mb-3">
         <label>Nombre</label>
         <input type="text" name="name" class="form-control" id="nombre">
     </div>
-
+    
     <div class="mb-3">
         <label>Nacionalidad</label>
         <input type="text" name="nationality" class="form-control" id="nacionalidad">
@@ -25,6 +25,8 @@
     <button type="submit" class="btn btn-success">Guardar</button>
     <a href="{{ route('authors.index') }}" class="btn btn-secondary">Cancelar</a>
 </form>
+
+<script src="{{asset('js/validaciones.js')}}"></script>
 <script src="{{asset('js/validacion_autores.js')}}"></script>
 
 @endsection

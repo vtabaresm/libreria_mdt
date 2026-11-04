@@ -4,7 +4,7 @@
 
 <h1>Editar Categoría</h1>
 
-<form action="{{ route('categories.update', $category->id) }}" method="POST" id="formulario">
+<form action="{{ route('categories.update', $category->id) }}" method="POST" id="formulario" novalidate>
     @csrf
     @method('PUT')
 
@@ -22,6 +22,7 @@
 
     <button class="btn btn-primary">Actualizar</button>
 </form>
+<script src="{{asset('js/validaciones.js')}}"></script>
 <script src="{{asset('js/validacion_categorias.js')}}"></script>
 
 @endsection

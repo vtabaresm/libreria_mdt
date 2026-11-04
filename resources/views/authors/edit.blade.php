@@ -4,7 +4,7 @@
 
 <h1>Editar Autor</h1>
 
-<form action="{{ route('authors.update', $author->id) }}" method="POST" id="formulario">
+<form action="{{ route('authors.update', $author->id) }}" method="POST" id="formulario" novalidate>
     @csrf
     @method('PUT')
 
@@ -25,6 +25,7 @@
 
     <button class="btn btn-primary">Actualizar</button>
 </form>
+<script src="{{asset('js/validaciones.js')}}"></script>
 <script src="{{asset('js/validacion_autores.js')}}"></script>
 
 @endsection

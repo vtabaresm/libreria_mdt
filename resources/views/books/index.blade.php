@@ -4,9 +4,12 @@
 
 <h1>Libros</h1>
 
+{{-- Solo el administrador puede crear, editar y eliminar --}}
+@if(Auth::user()->role == 'admin')
 <a href="{{ route('books.create') }}" class="btn btn-primary mb-3">
     Nuevo Libro
 </a>
+@endif
 
     @if($books->isEmpty())
         <div class="alert alert-warning">
@@ -22,7 +25,9 @@
                     <th>Categoría</th>
                     <th>Autores</th>
                     <th>Descripción</th>
+                    @if(Auth::user()->role == 'admin')
                     <th>Acciones</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +49,7 @@
                             @endif
                         </td>
                         <td>{{ Str::limit($book->description, 50) }}</td>
+                        @if(Auth::user()->role == 'admin')
                         <td>
                             <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning btn-sm">
                                 Editar
@@ -58,6 +64,7 @@
                                 </button>
                             </form>
                         </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>

@@ -4,23 +4,23 @@
 <div class="container mt-4">
     <h1>Editar Libro</h1>
 
-    <form action="{{ route('books.update', $book->id) }}" method="POST" >
+    <form action="{{ route('books.update', $book->id) }}" method="POST" id="formulario" novalidate>
         @csrf
         @method('PUT')
 
         <div class="mb-3">
             <label class="form-label">Título</label>
-            <input type="text" name="title" class="form-control" value="{{ $book->title }}">
+            <input type="text" name="title" class="form-control" value="{{ $book->title }}" id="titulo">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Año de publicación</label>
-            <input type="number" name="publication_year" class="form-control" value="{{ $book->publication_year }}">
+            <input type="number" name="publication_year" class="form-control" value="{{ $book->publication_year }}" id="anio">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Categoría</label>
-            <select name="category_id" class="form-select">
+            <select name="category_id" class="form-select" id="categoria">
                 <option value="">Seleccione una categoría</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" {{ $book->category_id == $category->id ? 'selected' : '' }}>
@@ -30,7 +30,7 @@
             </select>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" id="autores">
             <label class="form-label">Autores</label>
 
             @foreach($authors as $author)
@@ -59,5 +59,7 @@
 
     </form>
 </div>
+<script src="{{asset('js/validaciones.js')}}"></script>
+<script src="{{asset('js/validacion_libros.js')}}"></script>
 
 @endsection
