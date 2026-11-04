@@ -1,20 +1,26 @@
-document.getElementById("formulario").addEventListener("submit", function(event){
+var formulario = document.getElementById("formulario");
+limpiarAlCorregir(formulario);
+
+formulario.addEventListener("submit", function(event){
     event.preventDefault();
-    var nombre = document.getElementById("nombre").value;
-    var descripcion = document.getElementById("descripcion").value;
+    var nombre = document.getElementById("nombre");
+    var valido = true;
 
-    // validar campos (eliminar espacios en blanco)
-    if(nombre.trim() === ""){
-        alert("El campo nombre es obligatorio");
-        return;
+    limpiarErrores(this);
+
+    // name: string (obligatorio, máximo 255 caracteres)
+    if(nombre.value.trim() === ""){
+        mostrarError(nombre, "El campo nombre es obligatorio.");
+        valido = false;
+    } else if(nombre.value.trim().length > 255){
+        mostrarError(nombre, "El nombre no puede tener más de 255 caracteres.");
+        valido = false;
     }
 
-    // validar campos (eliminar espacios en blanco)
-    if(descripcion.trim() === ""){
-        alert("El campo descripcion es obligatorio");
-        return;
-    }
+    // description: text nullable (opcional, no requiere validación)
 
     // enviar formulario si todo está correcto
-    this.submit();
+    if(valido){
+        this.submit();
+    }
 })

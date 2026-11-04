@@ -1,31 +1,41 @@
-document.getElementById("formulario").addEventListener("submit", function(event){
-    event.preventDefault();
-    var nombre = document.getElementById("nombre").value;
-    var nacionalidad = document.getElementById("nacionalidad").value;
-    var fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+var formulario = document.getElementById("formulario");
+limpiarAlCorregir(formulario);
 
-    // validar campos (eliminar espacios en blanco, cantidad de caracteres)
-    // la fecha de nacimiento debe ser una fecha válida y no puede ser mayor a la fecha actual
-    if(nombre.trim() === "" || nombre.length > 50){
-        alert("El nombre es obligatorio y no puede tener más de 50 caracteres.");
-        return;
+formulario.addEventListener("submit", function(event){
+    event.preventDefault();
+    var nombre = document.getElementById("nombre");
+    var nacionalidad = document.getElementById("nacionalidad");
+    var fecha_nacimiento = document.getElementById("fecha_nacimiento");
+    var valido = true;
+
+    limpiarErrores(this);
+
+    // name: string (obligatorio, máximo 255 caracteres)
+    if(nombre.value.trim() === ""){
+        mostrarError(nombre, "El campo nombre es obligatorio.");
+        valido = false;
+    } else if(nombre.value.trim().length > 255){
+        mostrarError(nombre, "El nombre no puede tener más de 255 caracteres.");
+        valido = false;
     }
-    if(nacionalidad.trim() === "" || nacionalidad.length > 50){
-        alert("La nacionalidad es obligatoria y no puede tener más de 50 caracteres.");
-        return;
+
+    // nationality: string nullable (opcional, máximo 255 caracteres)
+    if(nacionalidad.value.trim().length > 255){
+        mostrarError(nacionalidad, "La nacionalidad no puede tener más de 255 caracteres.");
+        valido = false;
     }
-    if(fecha_nacimiento.trim() === ""){
-        alert("La fecha de nacimiento es obligatoria.");
-        return;
-    }
-    // se convierte la fecha de nacimiento a un objeto Date y se mira la fecha actual
-    var fechaNacimientoDate = new Date(fecha_nacimiento);
-    var fechaActual = new Date();
-    if(fechaNacimientoDate > fechaActual){
-        alert("La fecha de nacimiento no puede ser mayor a la fecha actual.");
-        return;
+
+    // birth_date: date nullable (opcional, pero si se escribe no puede ser mayor a la fecha actual)
+    // (las fechas en formato AAAA-MM-DD se pueden comparar como texto)
+    if(fecha_nacimiento.value !== "" && fecha_nacimiento.value > fechaHoy()){
+        mostrarError(fecha_nacimiento, "La fecha de nacimiento no puede ser mayor a la fecha actual.");
+        valido = false;
     }
 
     // enviar formulario si todo está correcto
-    this.submit();
+    if(valido){
+        this.submit();
+    }
 })
+
+
