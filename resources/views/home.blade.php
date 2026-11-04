@@ -56,6 +56,21 @@
             </div>
         </div>
 
+        {{-- Datos Externos --}}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Datos Externos</h4>
+                    <p class="card-text">
+                        Acceder a datos externos.
+                    </p>
+                    <a href="{{ route('datos.index') }}" class="btn btn-danger">
+                        Ir a datos externos
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>
