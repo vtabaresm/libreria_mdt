@@ -4,22 +4,22 @@
 
 <h1>Nuevo Libro</h1>
 
-<form action="{{ route('books.store') }}" method="POST" id="formulario" novalidate>
+<form action="{{ route('books.store') }}" method="POST">
     @csrf
 
     <div class="mb-3">
         <label>Título</label>
-        <input type="text" name="title" class="form-control" id="titulo">
+        <input type="text" name="title" class="form-control">
     </div>
 
     <div class="mb-3">
         <label>Año publicación</label>
-        <input type="number" name="publication_year" min="1901" max="{{ date('Y') }}" step="1" class="form-control" id="anio">
+        <input type="number" name="publication_year" min="1901" max="2099" step="1" class="form-control">
     </div>
 
     <div class="mb-3">
         <label class="form-label">Categoría</label>
-        <select name="category_id" class="form-control" id="categoria">
+        <select name="category_id" class="form-control">
             <option value="">Seleccione una categoría</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">
@@ -29,7 +29,7 @@
         </select>
     </div>
 
-    <div class="mb-3" id="autores">
+    <div class="mb-3">
         <label class="form-label">Autores</label>
         @foreach($authors as $author)
             <div class="form-check">
@@ -48,7 +48,5 @@
     <a href="{{ route('books.index') }}" class="btn btn-secondary">Cancelar</a>
 
     </form>
-<script src="{{asset('js/validaciones.js')}}"></script>
-<script src="{{asset('js/validacion_libros.js')}}"></script>
 
 @endsection

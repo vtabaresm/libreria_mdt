@@ -4,18 +4,18 @@
 <div class="container mt-4">
     <h1>Editar Libro</h1>
 
-    <form action="{{ route('books.update', $book->id) }}" method="POST" id="formulario" novalidate>
+    <form action="{{ route('books.update', $book->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="mb-3">
             <label class="form-label">Título</label>
-            <input type="text" name="title" class="form-control" value="{{ $book->title }}" id="titulo">
+            <input type="text" name="title" class="form-control" value="{{ $book->title }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Año de publicación</label>
-            <input type="number" name="publication_year" class="form-control" value="{{ $book->publication_year }}" id="anio">
+            <input type="number" name="publication_year" class="form-control" value="{{ $book->publication_year }}">
         </div>
 
         <div class="mb-3">
@@ -30,7 +30,7 @@
             </select>
         </div>
 
-        <div class="mb-3" id="autores">
+        <div class="mb-3">
             <label class="form-label">Autores</label>
 
             @foreach($authors as $author)
@@ -59,7 +59,5 @@
 
     </form>
 </div>
-<script src="{{asset('js/validaciones.js')}}"></script>
-<script src="{{asset('js/validacion_libros.js')}}"></script>
 
 @endsection
