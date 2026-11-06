@@ -4,22 +4,26 @@
 
 <h1>Editar Categoría</h1>
 
-<form action="{{ route('categories.update', $category->id) }}" method="POST">
+<form action="{{ route('categories.update', $category->id) }}" method="POST" id="formulario">
     @csrf
     @method('PUT')
 
     <div class="mb-3">
-        <label>Nombre</label>
-        <input type="text" name="name" value="{{ $category->name }}" class="form-control">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="name" id="nombre" value="{{ $category->name }}" class="form-control">
     </div>
 
     <div class="mb-3">
-        <label>Descripción</label>
-        <textarea name="description" class="form-control">{{ $category->description }}</textarea>
+        <label for="descripcion">Descripción</label>
+        <textarea name="description" id="descripcion" class="form-control">{{ $category->description }}</textarea>
     </div>
 
-    <button class="btn btn-primary">Actualizar</button>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
     <a href="{{ route('categories.index') }}" class="btn btn-secondary">Cancelar</a>
 </form>
 @endsection
 
+@push('scripts')
+    <script src="{{ asset('js/validaciones.js') }}"></script>
+    <script src="{{ asset('js/validacion_categorias.js') }}"></script>
+@endpush

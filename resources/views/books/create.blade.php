@@ -4,22 +4,22 @@
 
 <h1>Nuevo Libro</h1>
 
-<form action="{{ route('books.store') }}" method="POST">
+<form action="{{ route('books.store') }}" method="POST" id="formulario">
     @csrf
 
     <div class="mb-3">
-        <label>Título</label>
-        <input type="text" name="title" class="form-control">
+        <label for="titulo">Título</label>
+        <input type="text" name="title" id="titulo" class="form-control">
     </div>
 
     <div class="mb-3">
-        <label>Año publicación</label>
-        <input type="number" name="publication_year" min="1901" max="2099" step="1" class="form-control">
+        <label for="anio">Año publicación</label>
+        <input type="number" name="publication_year" id="anio" min="1901" max="2099" step="1" class="form-control">
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Categoría</label>
-        <select name="category_id" class="form-control">
+        <label for="categoria" class="form-label">Categoría</label>
+        <select name="category_id" id="categoria" class="form-control">
             <option value="">Seleccione una categoría</option>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">
@@ -29,7 +29,7 @@
         </select>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3" id="autores">
         <label class="form-label">Autores</label>
         @foreach($authors as $author)
             <div class="form-check">
@@ -40,8 +40,8 @@
     </div>
 
     <div class="mb-3">
-        <label>Descripción</label>
-        <textarea name="description" class="form-control"></textarea>
+        <label for="descripcion">Descripción</label>
+        <textarea name="description" id="descripcion" class="form-control"></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -50,3 +50,8 @@
     </form>
 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/validaciones.js') }}"></script>
+    <script src="{{ asset('js/validacion_libros.js') }}"></script>
+@endpush
