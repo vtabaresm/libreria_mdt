@@ -10,9 +10,7 @@ formulario.addEventListener("submit", function(event){
     var autoresSeleccionados = autores.querySelectorAll("input[type=checkbox]:checked");
     var anioActual = new Date().getFullYear();
     var valido = true;
-
     limpiarErrores(this);
-
     // title: string (obligatorio, máximo 255 caracteres)
     if(titulo.value.trim() === ""){
         mostrarError(titulo, "El campo título es obligatorio.");
@@ -21,7 +19,6 @@ formulario.addEventListener("submit", function(event){
         mostrarError(titulo, "El título no puede tener más de 255 caracteres.");
         valido = false;
     }
-
     // publication_year: year nullable (opcional). En MySQL el tipo YEAR solo admite desde 1901,
     // y además el año no puede ser mayor al actual
     if(anio.value !== ""){
@@ -31,21 +28,19 @@ formulario.addEventListener("submit", function(event){
             valido = false;
         }
     }
-
     // category_id: llave foránea obligatoria
     if(categoria.value === ""){
         mostrarError(categoria, "Seleccione una categoría.");
         valido = false;
     }
-
     // se debe marcar al menos un autor
     if(autoresSeleccionados.length === 0){
         mostrarError(autores, "Seleccione al menos un autor.");
         valido = false;
     }
-
     // enviar formulario si todo está correcto
     if(valido){
         this.submit();
     }
 })
+

@@ -55,3 +55,4 @@
     <script src="{{ asset('js/validaciones.js') }}"></script>
     <script src="{{ asset('js/validacion_libros.js') }}"></script>
 @endpush
+
