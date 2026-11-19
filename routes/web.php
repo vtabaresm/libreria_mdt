@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\DatosController;
+use App\Http\Controllers\DataAPIController;
 
-//Rutas de login, registro, logout y recuperación de contraseña
+//Rutas de login, registro, logout y recuperación de contraseña (laravel/ui)
 Auth::routes();
 
-//Solo el administrador puede crear, editar y eliminar
+//Rutas solo para el administrador: crear, editar y eliminar
 //(este grupo va primero para que /create no se tome como /{id})
 Route::middleware('auth', 'role:admin')->group(function () {
     Route::resource('categories', CategoryController::class)->except(['index', 'show']);
@@ -20,7 +20,7 @@ Route::middleware('auth', 'role:admin')->group(function () {
     Route::resource('books', BookController::class)->except(['index', 'show']);
 });
 
-//El administrador y el lector pueden consultar
+//Rutas de consulta: las pueden usar el administrador y el lector
 Route::middleware('auth', 'role:admin|reader')->group(function () {
     Route::get('/', function () {
         return view('home');
@@ -29,4 +29,9 @@ Route::middleware('auth', 'role:admin|reader')->group(function () {
     Route::resource('categories', CategoryController::class)->only(['index', 'show']);
     Route::resource('authors', AuthorController::class)->only(['index', 'show']);
     Route::resource('books', BookController::class)->only(['index', 'show']);
+
+    //Ruta para acceder al index de datos (Consumo de API externa)
+    Route::get('datos', [DataAPIController::class, 'index'])->name('datos.index');
 });
+
+
