@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -16,8 +15,6 @@
 <div class="container mt-4">
     @yield('content')
 </div>
-
-@stack('scripts')
 
 </body>
 </html>
