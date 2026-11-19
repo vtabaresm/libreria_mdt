@@ -2,15 +2,6 @@
 
 Repositorio del proyecto **"Librería MDT"** para el libro **_Desarrollo Web Paso a Paso_** cuyo autor es Valentina Tabares Morales.
 
-Este repositorio corresponde a **FASE 2 - Validaciones lado del cliente** del proyecto que se construye a lo largo del libro. En esta versión se implementa una aplicación web en **Laravel** con las operaciones **CRUD completas** (crear, listar, editar y eliminar) para la gestión de una librería.
-
-## Funcionalidades
-
-- **Categorías**: administración de las categorías de libros (nombre y descripción).
-- **Autores**: administración de a# Librería MDT
-
-Repositorio del proyecto **"Librería MDT"** para el libro **_Desarrollo Web Paso a Paso_** cuyo autor es Valentina Tabares Morales.
-
 Este repositorio corresponde a proyecto que se construye a lo largo del libro. Cada rama del repositorio corresponde a una de las siguientes FASES, que buscan presentar la implementación de funcionalidades específicas:  
 
 ## Fases de desarrollo
