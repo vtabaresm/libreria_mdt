@@ -12,7 +12,7 @@
 <a href="{{ route('authors.create') }}" class="btn btn-primary mb-3">
     Nuevo Autor
 </a>
-<a href="{{ route('authors.import.form') }}" class="btn btn-success mb-3">
+<a href="{{ route('authors.importForm') }}" class="btn btn-success mb-3">
     Importar desde Excel
 </a>
 @endif
