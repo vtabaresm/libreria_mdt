@@ -8,7 +8,7 @@
     @csrf
 
     <div class="mb-3">
-        <label for="nombre">Nombre</label>
+        <label for="nombre">Nombre *</label>
         <input type="text" name="name" id="nombre" class="form-control">
     </div>
 
