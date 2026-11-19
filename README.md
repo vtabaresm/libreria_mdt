@@ -2,15 +2,6 @@
 
 Repositorio del proyecto **"Librería MDT"** para el libro **_Desarrollo Web Paso a Paso_** cuyo autor es Valentina Tabares Morales.
 
-Esta rama corresponde a **FASE 23 - Consumo de API externa** del proyecto que se construye a lo largo del libro. En esta versión .
-
-## Funcionalidades
-
-- **Categorías**: administración de las categorías de libros (nombre y descripción).
-- **Autores**: administración de a# Librería MDT
-
-Repositorio del proyecto **"Librería MDT"** para el libro **_Desarrollo Web Paso a Paso_** cuyo autor es Valentina Tabares Morales.
-
 Este repositorio corresponde a proyecto que se construye a lo largo del libro. Cada rama del repositorio corresponde a una de las siguientes FASES, que buscan presentar la implementación de funcionalidades específicas:  
 
 ## Fases de desarrollo
@@ -18,6 +9,7 @@ Este repositorio corresponde a proyecto que se construye a lo largo del libro. C
 - **Fase 1**: operaciones **CRUD completas** (crear, listar, editar y eliminar) para la gestión de una librería.
 - **Fase 2**: se realizan validaciones del lado del cliente (JavaScript) para los formularios de creación y edición.
 - **Fase 3**: se agrega funcionalidad para consumir datos de API externa (https://www.datos.gov.co/resource/577f-9ckm.json). También se realiza gráfica utilizando la libería Plotly (https://plotly.com/javascript/).
+- **Fase 4**: se agrega lo relacionado con autenticación y gestión de roles.
 
 ## Funcionalidades
 

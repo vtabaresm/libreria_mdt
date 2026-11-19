@@ -15,11 +15,18 @@ class Role
      */
     public function handle(Request $request, Closure $next, $roles): Response
     {
-        //Los roles permitidos llegan separados por | (por ejemplo: admin|reader)
-        $newRol = explode('|', $roles);
-        $roleName = strtolower($request->user()->role);
-        if (!in_array($roleName, $newRol))
-            return abort(403, __('Unauthorized'));
+        //1. Los roles permitidos llegan desde la ruta separados por | (por ejemplo: 'role:admin|reader')
+        $rolesPermitidos = explode('|', $roles);
+
+        //2. Rol del usuario que inició sesión
+        $rolUsuario = strtolower($request->user()->role);
+
+        //3. Si su rol no está permitido, se responde con error 403 (acceso prohibido)
+        if (!in_array($rolUsuario, $rolesPermitidos)) {
+            abort(403, 'No tiene permisos para realizar esta acción.');
+        }
+
+        //Si el rol está permitido, la petición continúa hacia el controlador
         return $next($request);
     }
 }
