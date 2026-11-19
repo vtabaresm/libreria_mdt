@@ -8,7 +8,9 @@
     <p class="lead mb-5">
         Bienvenido. Seleccione el módulo al que desea acceder.
     </p>
+
     <div class="row justify-content-center">
+
         {{-- Categorías --}}
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
@@ -23,6 +25,7 @@
                 </div>
             </div>
         </div>
+
         {{-- Autores --}}
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
@@ -37,6 +40,7 @@
                 </div>
             </div>
         </div>
+
         {{-- Libros --}}
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
@@ -51,7 +55,24 @@
                 </div>
             </div>
         </div>
+
+        {{-- Datos Externos --}}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Datos Externos</h4>
+                    <p class="card-text">
+                        Acceder a datos externos.
+                    </p>
+                    <a href="{{ route('datos.index') }}" class="btn btn-danger">
+                        Ir a datos externos
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </div>
 
 @endsection
