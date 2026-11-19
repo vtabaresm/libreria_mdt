@@ -71,6 +71,21 @@
             </div>
         </div>
 
+        {{-- Reportes --}}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Generar reportes</h4>
+                    <p class="card-text">
+                        Descarga reportes en Excel y PDF.
+                    </p>
+                    <a href="{{ route('reports.index') }}" class="btn btn-dark">
+                        Ir a reportes
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>

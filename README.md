@@ -11,6 +11,7 @@ Este repositorio corresponde a proyecto que se construye a lo largo del libro. C
 - **Fase 3**: se agrega funcionalidad para consumir datos de API externa (https://www.datos.gov.co/resource/577f-9ckm.json). También se realiza gráfica utilizando la libería Plotly (https://plotly.com/javascript/).
 - **Fase 4**: se agrega lo relacionado con autenticación y gestión de roles. 
 - **Fase 5**: se agrega funcionalidad para carga de datos desde excel. Para el ejemplo se cargan autores.
+- **Fase 6**: funcionalidad para generar reportes en excel y pdf.
 
 ## Funcionalidades
 
