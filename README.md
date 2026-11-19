@@ -24,6 +24,7 @@ Este repositorio corresponde a proyecto que se construye a lo largo del libro. C
 - **Categorías**: administración de las categorías de libros (nombre y descripción).
 - **Autores**: administración de autores (nombre, nacionalidad y fecha de nacimiento).
 - **Libros**: administración de libros (título, año de publicación, descripción y categoría), con asignación de uno o varios autores.
+- **Datos Externos**: consume datos de una API externa y los grafica.
 
 ## Tecnologías
 
