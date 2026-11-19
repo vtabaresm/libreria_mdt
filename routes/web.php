@@ -14,6 +14,8 @@ Auth::routes();
 //(este grupo va primero para que /create no se tome como /{id})
 Route::middleware('auth', 'role:admin')->group(function () {
     Route::resource('categories', CategoryController::class)->except(['index', 'show']);
+    Route::get('authors/import', [AuthorController::class, 'importForm'])->name('authors.import.form');
+    Route::post('authors/import', [AuthorController::class, 'import'])->name('authors.import');
     Route::resource('authors', AuthorController::class)->except(['index', 'show']);
     Route::resource('books', BookController::class)->except(['index', 'show']);
 });
