@@ -10,12 +10,14 @@
 
     <div class="mb-3">
         <label for="nombre">Nombre</label>
-        <input type="text" name="name" id="nombre" value="{{ $category->name }}" class="form-control">
+        <input type="text" name="name" id="nombre" value="{{ old('name', $category->name) }}" class="form-control @error('name') is-invalid @enderror">
+        @error('name')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
     </div>
 
     <div class="mb-3">
         <label for="descripcion">Descripción</label>
-        <textarea name="description" id="descripcion" class="form-control">{{ $category->description }}</textarea>
+        <textarea name="description" id="descripcion" class="form-control @error('description') is-invalid @enderror">{{ old('description', $category->description) }}</textarea>
+        @error('description')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
     </div>
 
     <button type="submit" class="btn btn-primary">Actualizar</button>

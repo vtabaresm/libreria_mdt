@@ -23,7 +23,8 @@ class AuthorController extends Controller
 
     public function store(Request $request)
     {
-        Author::create($request->all());
+        $datos = $request->validate($this->reglas(), $this->mensajes());
+        Author::create($datos);
         return redirect()->route('authors.index');
     }
 
@@ -70,9 +71,33 @@ class AuthorController extends Controller
     public function update(Request $request, string $id)
     {
         $author = Author::findOrFail($id);
-        $author->update($request->all());
+        $datos = $request->validate($this->reglas(), $this->mensajes());
+        $author->update($datos);
 
         return redirect()->route('authors.index');
+    }
+
+    /**
+     * Reglas de validación (las mismas del lado del cliente en validacion_autores.js).
+     */
+    private function reglas(): array
+    {
+        return [
+            'name'        => ['required', 'string', 'max:255'],
+            'nationality' => ['nullable', 'string', 'max:255'],
+            'birth_date'  => ['nullable', 'date', 'before_or_equal:today'],
+        ];
+    }
+
+    private function mensajes(): array
+    {
+        return [
+            'name.required'               => 'El campo nombre es obligatorio.',
+            'name.max'                    => 'El nombre no puede tener más de 255 caracteres.',
+            'nationality.max'             => 'La nacionalidad no puede tener más de 255 caracteres.',
+            'birth_date.date'             => 'La fecha de nacimiento no es válida.',
+            'birth_date.before_or_equal'  => 'La fecha de nacimiento no puede ser mayor a la fecha actual.',
+        ];
     }
 
     public function destroy(string $id)

@@ -34,7 +34,8 @@ class CategoryController extends Controller
     {
         //Se crea el nuevo registro de la categoría.
         //Con $request se obtienen los datos del formulario.
-        Category::create($request->all());
+        $datos = $request->validate($this->reglas(), $this->mensajes());
+        Category::create($datos);
         //Se retorna la vista index de categorias
         return redirect()->route('categories.index');
     }
@@ -66,9 +67,29 @@ class CategoryController extends Controller
         //Busca una categoría por su id. Si no existe, lanza un error
         $category = Category::findOrFail($id);
         //Se obtiene del formulario de edición los nuevos datos
-        $category->update($request->all());
+        $datos = $request->validate($this->reglas(), $this->mensajes());
+        $category->update($datos);
         //Se retorna la vista index
         return redirect()->route('categories.index');
+    }
+
+    /**
+     * Reglas de validación (las mismas del lado del cliente en validacion_categorias.js).
+     */
+    private function reglas(): array
+    {
+        return [
+            'name'        => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+        ];
+    }
+
+    private function mensajes(): array
+    {
+        return [
+            'name.required' => 'El campo nombre es obligatorio (Servidor).',
+            'name.max'      => 'El nombre no puede tener más de 255 caracteres.',
+        ];
     }
 
     /**

@@ -10,24 +10,27 @@
 
         <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>
-            <input type="text" name="title" id="titulo" class="form-control" value="{{ $book->title }}">
+            <input type="text" name="title" id="titulo" class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $book->title) }}">
+            @error('title')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
         </div>
 
         <div class="mb-3">
             <label for="anio" class="form-label">Año de publicación</label>
-            <input type="number" name="publication_year" id="anio" class="form-control" value="{{ $book->publication_year }}">
+            <input type="number" name="publication_year" id="anio" class="form-control @error('publication_year') is-invalid @enderror" value="{{ old('publication_year', $book->publication_year) }}">
+            @error('publication_year')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
         </div>
 
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoría</label>
-            <select name="category_id" class="form-select" id="categoria">
+            <select name="category_id" class="form-select @error('category_id') is-invalid @enderror" id="categoria">
                 <option value="">Seleccione una categoría</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}" {{ $book->category_id == $category->id ? 'selected' : '' }}>
+                    <option value="{{ $category->id }}" {{ old('category_id', $book->category_id) == $category->id ? 'selected' : '' }}>
                         {{ $category->name }}
                     </option>
                 @endforeach
             </select>
+            @error('category_id')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
         </div>
 
         <div class="mb-3" id="autores">
@@ -40,18 +43,21 @@
                         name="authors[]"
                         value="{{ $author->id }}"
                         class="form-check-input"
-                        {{ $book->authors->contains($author->id) ? 'checked' : '' }}
+                        {{ in_array($author->id, old('authors', $book->authors->pluck('id')->all())) ? 'checked' : '' }}
                     >
                     <label class="form-check-label">
                         {{ $author->name }}
                     </label>
                 </div>
             @endforeach
+            @error('authors')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
+            @error('authors.*')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
         </div>
 
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción</label>
-            <textarea name="description" id="descripcion" class="form-control">{{ $book->description }}</textarea>
+            <textarea name="description" id="descripcion" class="form-control @error('description') is-invalid @enderror">{{ old('description', $book->description) }}</textarea>
+            @error('description')<div class="invalid-feedback d-block">{{ $message }}</div>@enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Actualizar</button>
