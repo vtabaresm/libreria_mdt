@@ -21,8 +21,7 @@ class BooksExport implements FromQuery, WithHeadings, WithMapping, ShouldAutoSiz
         return Book::query()->with(['category', 'authors'])->orderBy('title');
     }
 
-    /**
-     * Fila de encabezados del Excel.
+    /**Fila de encabezados del Excel.
      */
     public function headings(): array
     {
